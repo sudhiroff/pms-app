@@ -1,0 +1,22 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        Customers
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th *ngFor="let col of conf">{{col['label']}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of cutomerList">
+               <td *ngFor="let col of conf">{{row[col['name']]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

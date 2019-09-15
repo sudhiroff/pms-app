@@ -1,0 +1,30 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="form" autocomplete="off"  (ngSubmit)="submit_Click()">
+        <div class="row" *ngFor="let item of formCtrl">
+          <div class="col-md-4 text-right">
+            <strong>{{item.label}}</strong>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>{{item.label}}</mat-label>
+               <input formControlName="{{item.name}}" autocomplete="off" matInput placeholder="{{item.label}}" required="{{item.required}}">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+             <div class="col-md-4"></div>
+             <div class="col-md-6">
+               <button type="submit" class="btn btn-primary px-4">Submit</button>
+             </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="loader" style="width:55px;margin:0 auto;"><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
