@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ctrls } from './controls';
 import { EndPointService } from '../../shared/end-point.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-add-customer',
@@ -12,7 +13,8 @@ export class AddCustomerComponent implements OnInit {
   loader: Boolean = false;
   form: FormGroup;
   formCtrl = ctrls;
-  constructor(private fb: FormBuilder, private endPointService: EndPointService) { }
+  constructor(private fb: FormBuilder, private endPointService: EndPointService,
+    public matSnackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.form = this.fb.group(this.prepareForm(this.formCtrl));
@@ -27,12 +29,18 @@ export class AddCustomerComponent implements OnInit {
   }
 
   private submit_Click() {    
-    debugger;
     if (this.form.valid) {
       this.loader = true;
       this.endPointService.addCutomer(this.form.value)
         .subscribe(res => {
           this.loader = false;
+          this.matSnackBar.open('Record Saved Successfully. !', '', { duration: 3000 });
+          this.form.markAsPristine();
+          this.form.markAsUntouched();
+          this.form.markAsPristine();
+          for(var name in this.form.controls) {
+            this.form.controls[name].setValue('');
+          }       
         });
     }
   }
