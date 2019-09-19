@@ -46,7 +46,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './containers/material.module';
 import { AddCustomerComponent } from './pages/add-customer/add-customer.component';
 import { EndPointService } from './shared/end-point.service';
-
+import { ItemsComponent } from './pages/items/items.component';
+import { ProductFormulationComponent } from './pages/product-formulation/product-formulation.component';
+import { TrialReportComponent } from './pages/trial-report/trial-report.component';
+import { IssueTrackersComponent } from './pages/issue-trackers/issue-trackers.component';
+import { ProductCostCalcComponent } from './pages/product-cost-calc/product-cost-calc.component';
+import { ProductionTrackerComponent } from './pages/production-tracker/production-tracker.component';
+import { ReportsComponent } from './pages/reports/reports.component';
 
 @NgModule({
   imports: [
@@ -74,15 +80,25 @@ import { EndPointService } from './shared/end-point.service';
     LoginComponent,
     RegisterComponent,
     CustomersComponent,
-    AddCustomerComponent
+    AddCustomerComponent,
+    ItemsComponent,
+    ProductFormulationComponent,
+    TrialReportComponent,
+    IssueTrackersComponent,
+    ProductCostCalcComponent,
+    ProductionTrackerComponent,
+    ReportsComponent
   ],
   providers: [
     EndPointService
-  //   {
-  //   provide: LocationStrategy,
-  //   useClass: HashLocationStrategy
-  // }
-],
-  bootstrap: [ AppComponent ]
+    //   {
+    //   provide: LocationStrategy,
+    //   useClass: HashLocationStrategy
+    // }
+  ],
+  entryComponents: [
+    AddCustomerComponent,
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

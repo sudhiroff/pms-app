@@ -45,48 +45,43 @@ export const navItems: NavData[] = [
     icon: 'icon-puzzle'
   },
   {
-    name: 'AddCustomer',
-    url: '/add-customer',
-    icon: 'icon-puzzle'
-  },
-  {
     name: 'Items',
-    url: '/customer',
+    url: '/items',
     icon: 'icon-puzzle',
   },
   {
     name: 'Product Formulation',
-    url: '/customer',
+    url: '/product-fromulation',
     icon: 'icon-puzzle',
   },
   {
     name: 'Trial Report',
-    url: '/customer',
+    url: '/trial-report',
     icon: 'icon-puzzle',
   },
   {
     name: 'Issue trackers',
-    url: '/customer',
+    url: '/issue-trackers',
     icon: 'icon-puzzle',
   },
   {
     name: 'Product Cost Calculator',
-    url: '/customer',
+    url: '/prod-cost-calc',
     icon: 'icon-puzzle',
   },
   {
     name: 'Production Tracker',
-    url: '/customer',
+    url: '/production-tracker',
     icon: 'icon-puzzle',
   },
   {
     name: 'Reports',
-    url: '/customer',
+    url: '/reports',
     icon: 'icon-puzzle',
   },
   {
     name: 'Configuration ',
-    url: '/customer',
+    url: '/conf',
     icon: 'icon-puzzle',
   }
   

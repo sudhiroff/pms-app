@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <div class="card-group">
+          <div class="card-group" *ngIf="!isLogin">
             <div class="card p-4">
               <div class="card-body">
                 <form [formGroup]="loginForm" (ngSubmit)="LoginClick()">

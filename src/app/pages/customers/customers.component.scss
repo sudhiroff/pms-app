@@ -1,0 +1,15 @@
+.custom-table{
+    width: 100%;
+}
+tr.mat-footer-row, tr.mat-row{
+    height: 30px;
+}
+tr.mat-header-row{
+    height: 45px;
+}
+.mat-header-cell{
+    font-size: 15px;
+}
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type{
+    padding-left: 0px;
+}

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ctrls } from './controls';
 import { EndPointService } from '../../shared/end-point.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-add-customer',
@@ -14,18 +14,37 @@ export class AddCustomerComponent implements OnInit {
   form: FormGroup;
   formCtrl = ctrls;
   constructor(private fb: FormBuilder, private endPointService: EndPointService,
-    public matSnackBar: MatSnackBar) { }
+    public matSnackBar: MatSnackBar,private dialogRef:MatDialogRef<AddCustomerComponent>) { }
 
   ngOnInit() {
     this.form = this.fb.group(this.prepareForm(this.formCtrl));
+
+    // this.formCtrl.forEach(element => {
+    //   if(element.required){
+    //     this.form.controls[element.name].setValidators(Validators.required);
+    //   }
+    // });
   }
 
   private prepareForm(list: any) {
     let formModel: any = {};
     list.forEach((item: any, i: any) => {
-      formModel[item.name] = [''];
+      if (item.required == true) {
+        formModel[item.name] = ['',[Validators.required]];
+      }
+      else {
+        formModel[item.name] = [''];
+      }
     });
     return formModel;
+  }
+
+  get getCheckValidEmail() {
+    debugger
+    let ctrl = this.form.get('email')
+    if (ctrl.errors && ctrl.errors.email) {
+      return ctrl.invalid;
+    }
   }
 
   private submit_Click() {    
@@ -35,12 +54,10 @@ export class AddCustomerComponent implements OnInit {
         .subscribe(res => {
           this.loader = false;
           this.matSnackBar.open('Record Saved Successfully. !', '', { duration: 3000 });
-          this.form.markAsPristine();
-          this.form.markAsUntouched();
-          this.form.markAsPristine();
+          this.dialogRef.close();
           for(var name in this.form.controls) {
-            this.form.controls[name].setValue('');
-          }       
+            this.form.controls[name].reset();
+          }
         });
     }
   }

@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  pms_user:"app-user",
   endpoint:{
      login:'/api/login',
      Customer:"/api/customer"

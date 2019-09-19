@@ -15,7 +15,8 @@ export const ctrls=[
         label:"Email id",
         placeholder:"First name",
         name:"email",
-        required:true
+        required:true,
+        isEmail:true
     },
     {
         label:"Mobile No",

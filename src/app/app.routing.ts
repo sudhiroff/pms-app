@@ -9,7 +9,12 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CustomersComponent } from './pages/customers/customers.component';
-import { AddCustomerComponent } from './pages/add-customer/add-customer.component';
+import { ItemsComponent } from './pages/items/items.component';
+import { ProductFormulationComponent } from './pages/product-formulation/product-formulation.component';
+import { TrialReportComponent } from './pages/trial-report/trial-report.component';
+import { IssueTrackersComponent } from './pages/issue-trackers/issue-trackers.component';
+import { ProductCostCalcComponent } from './pages/product-cost-calc/product-cost-calc.component';
+import { ReportsComponent } from './pages/reports/reports.component';
 
 
 export const routes: Routes = [
@@ -52,7 +57,11 @@ export const routes: Routes = [
     data: {
       title: 'Home'
     },
-    children: [
+    children: [      
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
       {
         path: 'customer',
         component: CustomersComponent,
@@ -61,44 +70,82 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'add-customer',
-        component: AddCustomerComponent,
+        path: 'items',
+        component: ItemsComponent,
         data: {
-          title: 'New-Customer'
+          title: 'Items'
         }
       },
       {
-        path: 'base',
-        loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
+        path: 'product-fromulation',
+        component: ProductFormulationComponent,
+        data: {
+          title: 'Product Formulation'
+        }
       },
       {
-        path: 'buttons',
-        loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
+        path: 'trial-report',
+        component: TrialReportComponent,
+        data: {
+          title: 'Trial Report'
+        }
       },
       {
-        path: 'charts',
-        loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
+        path: 'issue-trackers',
+        component: IssueTrackersComponent,
+        data: {
+          title: 'Issue trackers'
+        }
       },
       {
-        path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+        path: 'prod-cost-calc',
+        component: ProductCostCalcComponent,
+        data: {
+          title: 'Product Cost Calculator'
+        }
       },
       {
-        path: 'icons',
-        loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
+        path: 'production-tracker',
+        component: ProductFormulationComponent,
+        data: {
+          title: 'Production Tracker'
+        }
       },
       {
-        path: 'notifications',
-        loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
-      },
-      {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
-      },
-      {
-        path: 'widgets',
-        loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+        path: 'reports',
+        component: ReportsComponent,
+        data: {
+          title: 'Reports'
+        }
       }
+      // {
+      //   path: 'base',
+      //   loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
+      // },
+      // {
+      //   path: 'buttons',
+      //   loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
+      // },
+      // {
+      //   path: 'charts',
+      //   loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
+      // },
+      // {
+      //   path: 'icons',
+      //   loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
+      // },
+      // {
+      //   path: 'notifications',
+      //   loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
+      // },
+      // {
+      //   path: 'theme',
+      //   loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
+      // },
+      // {
+      //   path: 'widgets',
+      //   loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+      // }
     ]
   },
   { path: '**', component: P404Component }
