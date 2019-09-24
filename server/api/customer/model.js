@@ -9,7 +9,7 @@ module.exports = mongoose.model('Customer',
         mobileNo: String,
         address:String,
         city:String,
-        State:String,
+        state:String,
         createdOn: {
             type: Date,
             default: Date.now

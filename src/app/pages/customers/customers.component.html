@@ -1,16 +1,24 @@
 <div class="animated fadeIn">
     <div class="card">
       <div class="card-body">
-        <button class="btn btn-xs btn-success align-right" (click)="New_Click()">New</button>
+         <button class="btn btn-xs btn-success align-right" (click)="New_Click()">New</button>
         <div style="height: 418px;overflow: auto">          
           <table mat-table [dataSource]="cutomerList" class="custom-table">
+              <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef>Action</th>
+                  <td mat-cell *matCellDef="let element" class="action-link"> 
+                      <span style="cursor: pointer;" (click)="actionDialog('Update',element)"><i class="fa fa-edit"></i></span> | 
+                      <span style="cursor: pointer;" (click)="actionDialog('Delete',element)"><i class="fa fa-trash"></i></span>    
+                  </td>
+                </ng-container>
                 <ng-container *ngFor="let item of conf" matColumnDef="{{item.name}}">
                   <th mat-header-cell *matHeaderCellDef>{{item.label}}</th>
                   <td mat-cell *matCellDef="let element"> {{element[item.name]}} </td>
-                </ng-container>
+                </ng-container>                
               <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
+          
         </div>
       </div>
     </div>

@@ -10,7 +10,10 @@
             <mat-form-field appearance="outline" style="width:300px;">
               <mat-label>{{item.label}}</mat-label>
                <input formControlName="{{item.name}}" autocomplete="off" matInput placeholder="{{item.label}}">
-               <mat-error *ngIf="getCheckValidEmail">Email must be a valid email address</mat-error>
+               <mat-error *ngIf="form.controls[item.name].errors && form.controls[item.name].errors.email">
+                 Email must be a valid email address</mat-error>     
+                 <mat-error *ngIf="form.controls[item.name].errors && form.controls[item.name].errors.pattern">
+                    Only numeric value</mat-error>            
             </mat-form-field>
           </div>
         </div>

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ctrls } from './controls';
 import { EndPointService } from '../../shared/end-point.service';
-import { MatSnackBar, MatDialogRef } from '@angular/material';
+import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-add-customer',
@@ -13,53 +13,55 @@ export class AddCustomerComponent implements OnInit {
   loader: Boolean = false;
   form: FormGroup;
   formCtrl = ctrls;
-  constructor(private fb: FormBuilder, private endPointService: EndPointService,
+  action=null;
+  row=null;
+  constructor(private fb: FormBuilder, private endPointService: EndPointService, @Inject(MAT_DIALOG_DATA) public data: any,
     public matSnackBar: MatSnackBar,private dialogRef:MatDialogRef<AddCustomerComponent>) { }
 
   ngOnInit() {
+    this.action=this.data['action'];
+    this.row=this.data['row'];
     this.form = this.fb.group(this.prepareForm(this.formCtrl));
-
-    // this.formCtrl.forEach(element => {
-    //   if(element.required){
-    //     this.form.controls[element.name].setValidators(Validators.required);
-    //   }
-    // });
+    if(this.action=="Update"){
+      for(var name in this.form.controls) {
+        this.form.controls[name].setValue(this.row[name]);
+      }
+    }
   }
 
   private prepareForm(list: any) {
     let formModel: any = {};
     list.forEach((item: any, i: any) => {
-      if (item.required == true) {
-        formModel[item.name] = ['',[Validators.required]];
-      }
-      else {
-        formModel[item.name] = [''];
-      }
+      formModel[item.name] = ['',item.validator];
     });
     return formModel;
-  }
-
-  get getCheckValidEmail() {
-    debugger
-    let ctrl = this.form.get('email')
-    if (ctrl.errors && ctrl.errors.email) {
-      return ctrl.invalid;
-    }
   }
 
   private submit_Click() {    
     if (this.form.valid) {
       this.loader = true;
-      this.endPointService.addCutomer(this.form.value)
+      if(this.action=="Update"){
+        this.endPointService.updateCustomer(this.row['_id'],this.form.value)
         .subscribe(res => {
-          this.loader = false;
-          this.matSnackBar.open('Record Saved Successfully. !', '', { duration: 3000 });
-          this.dialogRef.close();
-          for(var name in this.form.controls) {
-            this.form.controls[name].reset();
-          }
+          this.upadteCtrl();
         });
+      }else{
+        this.endPointService.addCutomer(this.form.value)
+        .subscribe(res => {
+          this.upadteCtrl();
+        });
+      }
+     
     }
   }
 
+
+  private upadteCtrl() {
+    this.loader = false;
+    this.matSnackBar.open('Record Saved Successfully. !', '', { duration: 3000 });
+    this.dialogRef.close();
+    for (var name in this.form.controls) {
+      this.form.controls[name].reset();
+    }
+  }
 }

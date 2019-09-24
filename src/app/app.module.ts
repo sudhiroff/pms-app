@@ -53,6 +53,7 @@ import { IssueTrackersComponent } from './pages/issue-trackers/issue-trackers.co
 import { ProductCostCalcComponent } from './pages/product-cost-calc/product-cost-calc.component';
 import { ProductionTrackerComponent } from './pages/production-tracker/production-tracker.component';
 import { ReportsComponent } from './pages/reports/reports.component';
+import { ConfirmBoxComponent } from './shared/confirm-box/confirm-box.component';
 
 @NgModule({
   imports: [
@@ -87,7 +88,8 @@ import { ReportsComponent } from './pages/reports/reports.component';
     IssueTrackersComponent,
     ProductCostCalcComponent,
     ProductionTrackerComponent,
-    ReportsComponent
+    ReportsComponent,
+    ConfirmBoxComponent
   ],
   providers: [
     EndPointService

@@ -13,6 +13,14 @@ export class EndPointService {
      return this.http.post(environment.endpoint.Customer,body);
   }
 
+  public updateCustomer(id:any,body:any){
+    return this.http.put(environment.endpoint.Customer+"/"+id,body);
+ }
+
+ public removeCustomer(id:any){
+  return this.http.delete(environment.endpoint.Customer+"/"+id);
+}
+
   public showCutomer(){
     return this.http.get(environment.endpoint.Customer);
  }

@@ -1,45 +1,46 @@
+import { Validators } from '@angular/forms';
+
 export const ctrls=[
     {
         label:"First Name",
         placeholder:"First name",
         name:"firstName",
-        required:true
+        validator:[Validators.required]
     },
     {
         label:"Last Name",
         placeholder:"First name",
         name:"lastName",
-        required:false
+        validator:[Validators.required]
     },
     {
         label:"Email id",
         placeholder:"First name",
         name:"email",
-        required:true,
-        isEmail:true
+        validator:[Validators.required,Validators.email]
     },
     {
         label:"Mobile No",
         placeholder:"First name",
         name:"mobileNo",
-        required:true
+        validator:[Validators.required,Validators.pattern("^[0-9]*$")]
     },
     {
         label:"Address",
         placeholder:"First name",
         name:"address",
-        required:false
+        validator:[]
     },
     {
         label:"City",
         placeholder:"First name",
         name:"city",
-        required:false
+        validator:[]
     },
     {
         label:"State",
         placeholder:"First name",
         name:"state",
-        required:false
+        validator:[]
     }
 ]

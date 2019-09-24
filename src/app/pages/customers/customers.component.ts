@@ -11,7 +11,7 @@ import { AddCustomerComponent } from '../add-customer/add-customer.component';
 export class CustomersComponent implements OnInit {  
   conf:any=conf
   cutomerList:Array<any>=[];
-  displayedColumns=["firstName","lastName","email","mobileNo","city"];
+  displayedColumns=["firstName","lastName","email","mobileNo","city","action"];
   constructor(private endPointService:EndPointService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -32,6 +32,27 @@ export class CustomersComponent implements OnInit {
       dialogRef.afterClosed().subscribe(res=>{
            this.ngOnInit();
       });
+  }
+
+  public actionDialog(action,row){
+    if(action=="Update"){
+      let dialogRef = this.dialog.open(AddCustomerComponent, {
+        width: '800px',
+        data: {
+           'action': action,
+           "row":row
+        }
+      });
+      dialogRef.afterClosed().subscribe(res=>{
+           this.ngOnInit();
+      });
+    }
+    if(action=="Delete"){
+        this.endPointService.removeCustomer(row['_id'])
+        .subscribe((res:any)=>{
+          this.ngOnInit();
+      });
+    }
   }
 
 }
