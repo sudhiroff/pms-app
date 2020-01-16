@@ -2,6 +2,24 @@ import { Validators } from '@angular/forms';
 
 export const ctrls=[
     {
+        label:"Project/Site Name",
+        placeholder:"Project/Site Name",
+        name:"projectName",
+        validator:[Validators.required]
+    },
+    {
+        label:"Company Name",
+        placeholder:"Company Name",
+        name:"companyName",
+        validator:[Validators.required]
+    }    ,
+    {
+        label:"Nature of Business",
+        placeholder:"Company Name",
+        name:"companyName",
+        validator:[Validators.required]
+    },
+    {
         label:"First Name",
         placeholder:"First name",
         name:"firstName",

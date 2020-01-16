@@ -1,33 +1,52 @@
 // Here you can add other styles
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-.breadcrumb{
-    margin-bottom: 10px;
+
+.breadcrumb {
+  margin-bottom: 10px;
 }
+
 // .mat-form-field-appearance-outline .mat-form-field-outline{
 //     top:10px!important
 // }
 .mat-form-field-appearance-outline .mat-form-field-infix {
-    padding: 7px 0 7px 0;
+  padding: 7px 0 7px 0;
 }
+
 .mat-form-field-label-wrapper {
-    top: -18px;
-    padding-top: .84375em;
+  top: -18px;
+  padding-top: .84375em;
 }
-.mat-form-field-wrapper{
-    padding-bottom: 12px;
+
+.mat-form-field-wrapper {
+  padding-bottom: 12px;
 }
-.mat-form-field-appearance-outline .mat-form-field-wrapper{
-    margin: 0px!important
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0px !important
 }
-.card{
-    margin-bottom: 0px;
+
+.card {
+  margin-bottom: 0px;
 }
-.sidebar-fixed .sidebar{
-    z-index: 0;
+
+.sidebar-fixed .sidebar {
+  z-index: 0;
 }
-td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type{
-    padding-left: 0px;
+
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+  padding-left: 0px;
 }
+
 .sidebar .nav-link {
-    padding: 0.75rem 7px!important;
+  padding: 0.75rem 7px !important;
+}
+
+ul.nav~button {
+  display: none !important;
+}
+
+.sidebar-fixed .sidebar {
+  z-index: 10000;
 }

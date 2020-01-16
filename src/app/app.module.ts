@@ -54,6 +54,7 @@ import { ProductCostCalcComponent } from './pages/product-cost-calc/product-cost
 import { ProductionTrackerComponent } from './pages/production-tracker/production-tracker.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { ConfirmBoxComponent } from './shared/confirm-box/confirm-box.component';
+import { AddItemComponent } from './pages/add-item/add-item.component';
 
 @NgModule({
   imports: [
@@ -89,7 +90,8 @@ import { ConfirmBoxComponent } from './shared/confirm-box/confirm-box.component'
     ProductCostCalcComponent,
     ProductionTrackerComponent,
     ReportsComponent,
-    ConfirmBoxComponent
+    ConfirmBoxComponent,
+    AddItemComponent
   ],
   providers: [
     EndPointService
@@ -100,6 +102,7 @@ import { ConfirmBoxComponent } from './shared/confirm-box/confirm-box.component'
   ],
   entryComponents: [
     AddCustomerComponent,
+    AddItemComponent
   ],
   bootstrap: [AppComponent]
 })

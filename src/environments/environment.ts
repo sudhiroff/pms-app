@@ -8,6 +8,7 @@ export const environment = {
   pms_user:"app-user",
   endpoint:{
      login:'/api/login',
-     Customer:"/api/customer"
+     Customer:"/api/customer",
+     Item:"/api/item"
   }
 };

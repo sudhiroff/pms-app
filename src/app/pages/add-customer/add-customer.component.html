@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <form [formGroup]="form" autocomplete="off" novalidate="novalidate" (ngSubmit)="submit_Click()">
-        <div class="row" *ngFor="let item of formCtrl">
+        <!-- <div class="row" *ngFor="let item of formCtrl">
           <div class="col-md-4 text-right">
             <strong>{{item.label}}</strong>
           </div>
@@ -16,17 +16,98 @@
                     Only numeric value</mat-error>            
             </mat-form-field>
           </div>
+        </div> -->
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Project/Site Name</mat-label>
+              <input formControlName="projectName" autocomplete="off" matInput placeholder="Project\Site Name">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Company Name</mat-label>
+              <input formControlName="companyName" autocomplete="off" matInput placeholder="Company Name">
+            </mat-form-field>
+          </div>
+          <div class="col-md-12" style="padding-bottom: 8px">
+            <label>Nature of Business</label><br>
+            <mat-radio-group formControlName="natureBusiness">
+              <mat-radio-button value="Builder">Builder</mat-radio-button>
+              <mat-radio-button value="Contractor">Contractor</mat-radio-button>
+              <mat-radio-button value="Aplicator">Aplicator</mat-radio-button>
+              <mat-radio-button value="Any-Others">Any-Others</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>GST No.</mat-label>
+              <input formControlName="gstNo" autocomplete="off" matInput placeholder="GST No.">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Remark</mat-label>
+              <input formControlName="remark" autocomplete="off" matInput placeholder="Any other remark">
+            </mat-form-field>
+          </div>
         </div>
         <div class="row">
-             <div class="col-md-4"></div>
-             <div class="col-md-6">
-               <button type="submit" class="btn btn-primary px-4">Submit</button>
-               <button class="btn btn-warning btn-flat col-xs-5" style="margin-right: 2px" mat-dialog-close>Close</button>
-             </div>
+          <div class="col-md-6">
+            <div style="padding-bottom: 10px"><strong>Site Address</strong></div>
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Contact Person Name</mat-label>
+              <input formControlName="siteContactPerName" autocomplete="off" matInput placeholder="Contact Person Name">
+            </mat-form-field><br>
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Mobile No.</mat-label>
+              <input formControlName="siteMobileNo" autocomplete="off" matInput placeholder="Mobile No.">
+              <mat-error *ngIf="form.controls['siteMobileNo'].errors && form.controls['siteMobileNo'].errors.pattern">
+                Only numeric value</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Email ID</mat-label>
+              <input formControlName="siteEmailId" autocomplete="off" matInput placeholder="Email ID">
+              <mat-error *ngIf="form.controls['siteEmailId'].errors && form.controls['siteEmailId'].errors.email">
+                Email must be a valid email address</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <div style="padding-bottom: 10px"><strong>Office Address</strong></div>
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Contact Person Name</mat-label>
+              <input formControlName="officeContactPerName" autocomplete="off" matInput
+                placeholder="Contact Person Name">
+            </mat-form-field><br>
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Mobile No.</mat-label>
+              <input formControlName="officeMobileNo" autocomplete="off" matInput placeholder="Mobile No.">
+              <mat-error
+                *ngIf="form.controls['officeMobileNo'].errors && form.controls['officeMobileNo'].errors.pattern">
+                Only numeric value</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" style="width:300px;">
+              <mat-label>Email ID</mat-label>
+              <input formControlName="officeEmailId" autocomplete="off" matInput placeholder="Email ID">
+              <mat-error *ngIf="form.controls['officeEmailId'].errors && form.controls['officeEmailId'].errors.email">
+                Email must be a valid email address</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-primary px-4">Submit</button>
+            <button class="btn btn-warning btn-flat col-xs-5" style="margin-right: 2px" mat-dialog-close>Close</button>
+          </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div *ngIf="loader" style="width:55px;margin:0 auto;"><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" aria-hidden="true"></i></div>
+            <div *ngIf="loader" style="width:55px;margin:0 auto;"><i
+                class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom" aria-hidden="true"></i></div>
           </div>
         </div>
       </form>

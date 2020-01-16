@@ -11,7 +11,7 @@ import { AddCustomerComponent } from '../add-customer/add-customer.component';
 export class CustomersComponent implements OnInit {  
   conf:any=conf
   cutomerList:Array<any>=[];
-  displayedColumns=["firstName","lastName","email","mobileNo","city","action"];
+  displayedColumns=["projectName","companyName","siteContactPerName","siteMobileNo","action"];
   constructor(private endPointService:EndPointService,private dialog: MatDialog) { }
 
   ngOnInit(): void {

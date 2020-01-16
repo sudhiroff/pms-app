@@ -31,9 +31,20 @@ export class AddCustomerComponent implements OnInit {
 
   private prepareForm(list: any) {
     let formModel: any = {};
-    list.forEach((item: any, i: any) => {
-      formModel[item.name] = ['',item.validator];
-    });
+    // list.forEach((item: any, i: any) => {
+    //   formModel[item.name] = ['',item.validator];
+    // });
+    formModel['projectName']=['',Validators.required];
+    formModel['companyName']=['',Validators.required];
+    formModel['natureBusiness']=['',Validators.required];
+    formModel['gstNo']=[''];
+    formModel['remark']=[''];
+    formModel['siteContactPerName']=['',Validators.required];
+    formModel['siteMobileNo']=['',[Validators.required,Validators.pattern("^[0-9]*$")]];
+    formModel['siteEmailId']=['',Validators.email];
+    formModel['officeContactPerName']=['',Validators.required];
+    formModel['officeMobileNo']=['',[Validators.required,Validators.pattern("^[0-9]*$")]];
+    formModel['officeEmailId']=['',Validators.email];
     return formModel;
   }
 

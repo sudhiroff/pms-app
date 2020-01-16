@@ -1,23 +1,18 @@
 export const conf=[
     {
-        label:"First Name",
-        name:"firstName"
+        label:"Project Name",
+        name:"projectName"
     },
     {
-        label:"Last Name",
-        name:"lastName"
+        label:"Company Name",
+        name:"companyName"
     },
     {
-        label:"Email Id",
-        name:"email"
+        label:"Site Contact Person",
+        name:"siteContactPerName"
     },
     {
         label:"Mobile No.",
-        name:"mobileNo"
-    },
-    {
-        label:"City",
-        name:"city"
+        name:"siteMobileNo"
     }
-
 ]
